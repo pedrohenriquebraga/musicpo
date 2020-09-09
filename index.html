@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Many Musics</title>
+    <link rel="stylesheet" href="styles/style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" crossorigin="anonymous">
+</head>
+<body onload="getResults()">
+    <header>
+        <h1 id="logo"> <i class="fa fa-music"></i> Musicpo</h1>
+    </header>
+
+    <section id="header_text">
+        <h2>Procure e ouça as melhores músicas!!</h2>
+        <p>Aqui você pode pesquisar e ouvir músicas <strong>de graça!!</strong></p>
+    </section>
+
+    <section id="search">
+        <input type="text" id="searchInput" placeholder="Procurar por música, artista, álbum...">
+        <span><i class="fa fa-search"></i></span>
+    </section>
+
+    <div class="controllers">
+        <span id="previous"><i class="fa fa-arrow-left"></i></span> 
+        <span id="next"><i class="fa fa-arrow-right"></i></span>
+    </div>
+    <div class="slider">
+        <h2>Resultados da busca</h2><span>Arraste &rarr;</span>
+        <div class="musics"></div>
+    </div>
+
+   
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/axios/0.20.0/axios.min.js" integrity="sha512-quHCp3WbBNkwLfYUMd+KwBAgpVukJu5MncuQaWXgCrfgcxCJAq/fo+oqrRKOj+UKEmyMCG3tb8RB63W+EmrOBg==" crossorigin="anonymous"></script>
+    <script src="scripts/script.js"></script>
+</body>
+</html>
