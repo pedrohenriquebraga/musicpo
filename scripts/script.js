@@ -47,7 +47,7 @@ async function getInfoCards(search) {
 function renderCard(infoCard) {
     musics.innerHTML += `
     <div class="card">
-        <img src="${infoCard.album.cover_medium}" alt="Música de ${infoCard.artist.name}">
+        <img src="${infoCard.album.cover_medium}" alt="Música de ${infoCard.artist.name}" loading="lazy">
         <p class="singer">${infoCard.artist.name}</p>
         <p class="name_music">${infoCard.title_short}</p>
         <audio src="${infoCard.preview}" controls type="audio/*"></audio>
