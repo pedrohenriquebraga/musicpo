@@ -50,7 +50,7 @@ function renderCard(infoCard) {
         <img src="${infoCard.album.cover_medium}" alt="Música de ${infoCard.artist.name}">
         <p class="singer">${infoCard.artist.name}</p>
         <p class="name_music">${infoCard.title_short}</p>
-        <audio src="${infoCard.preview}" controls type="audio/*"></audio>
+        <audio src="${infoCard.preview.replace("http", "https")}" controls type="audio/*"></audio>
         <a href="${infoCard.link}" target="_blank" rel="noopener noreferrer">Ouça Agora <i class="fa fa-play"></i></a>
     </div>
     `
