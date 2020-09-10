@@ -1,14 +1,14 @@
 // Sistema de rolagem 
 
 let searchInput = document.querySelector('#searchInput')
-searchButton = document.querySelector('#search span')
-musics = document.querySelector('.musics')
+    searchButton = document.querySelector('#search span')
+    musics = document.querySelector('.musics')
 
-slider = document.querySelector('.slider')
-previousCard = document.querySelector('#previous')
-nextCard = document.querySelector('#next')
+    slider = document.querySelector('.slider')
+    previousCard = document.querySelector('#previous')
+    nextCard = document.querySelector('#next')
 
-scrollValue = 0
+    scrollValue = 0
 
 previousCard.addEventListener('click', () => {
     maxScroll = parseInt(window.getComputedStyle(slider).width.replace('px', ''))
@@ -38,6 +38,7 @@ async function getInfoCards(search) {
             return response = results.data['data']
         }
     }).catch(err => {
+        alert('Não foi possível realizar a pesquisa!!')
         return console.error(err)
     })
     if (response) {
@@ -49,6 +50,7 @@ async function getInfoCards(search) {
 // Renderiza o cartão no slide
 function renderCard(infoCard) {
     if (infoCard) {
+        // Cria o card
         musics.innerHTML += `
             <div class="card">
                 <img src="${infoCard.album.cover_medium}" alt="Música de ${infoCard.artist.name}" loading="lazy">
@@ -59,18 +61,22 @@ function renderCard(infoCard) {
             <span class="explicit hidden">Explícito</span>
             </div>
             `
+
+        // Caso a música tenha a letra explícita, ficará com a borda vermelha e um aviso.
         if (infoCard.explicit_lyrics) {
             let cards = document.querySelectorAll('.card')
             cards[cards.length - 1].style.border = '3px solid #f00'
             cards[cards.length - 1].innerHTML += '<span class="explicit">Letra Explícita</span>'
         }
+
     } else {
         alert('Erro ao realizar a pesquisa!!')
     }
 }
 
 async function getResults() {
-    const randomArtist = ['Marshmello',
+    const randomArtist = [
+        'Marshmello',
         'Anne Marie',
         'Lil Pump',
         'Alan Walker',
@@ -79,7 +85,8 @@ async function getResults() {
         'Anitta',
         'Ludmilla',
         'Gusttavo Lima',
-        'Simone e Simaria']
+        'Simone e Simaria'
+    ]
     const randomNumber = Math.round(Math.random() * (randomArtist.length - 1))
     let search = searchInput.value || randomArtist[randomNumber]
 
