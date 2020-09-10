@@ -58,7 +58,7 @@ function renderCard(infoCard) {
         `
 
     if (infoCard.explicit_lyrics) {
-        cards[-1].style.border = '3px solid #f00'
+        cards[cards.length - 1].style.border = '3px solid #f00'
     }
 }
 
