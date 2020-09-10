@@ -35,7 +35,7 @@ nextCard.addEventListener('click', () => {
 // Acessa a API e procura o que foi pesquisado
 async function getInfoCards(search) {
     let response = {}
-    await axios.get(`https://api.deezer.com/search?q=${search}&output=json`).then(results => {
+    await axios.get(`https://api.deezer.com/search?q=${search}`).then(results => {
         console.log(results)
         return response = results.data['data']
     }).catch(err => {
