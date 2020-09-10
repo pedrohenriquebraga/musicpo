@@ -36,6 +36,7 @@ nextCard.addEventListener('click', () => {
 async function getInfoCards(search) {
     let response = {}
     await axios.get(`https://api.deezer.com/search?q=${search}&output=json`).then(results => {
+        console.log(results)
         return response = results.data['data']
     }).catch(err => {
         return console.error(err)
