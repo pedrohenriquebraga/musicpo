@@ -3,6 +3,7 @@
 let searchInput = document.querySelector('#searchInput')
     searchButton = document.querySelector('#search span')
     musics = document.querySelector('.musics')
+    cards = document.querySelectorAll('.card')
 
     slider = document.querySelector('.slider')
     previousCard = document.querySelector('#previous')
@@ -34,7 +35,7 @@ nextCard.addEventListener('click', () => {
 // Acessa a API e procura o que foi pesquisado
 async function getInfoCards(search) {
     let response = {}
-    await axios.get(`https://cors-anywhere.herokuapp.com/https://api.deezer.com/search?q=${search}`).then(results => {
+    await axios.get(`https://api.deezer.com/search?q=${search}&output=json`).then(results => {
         return response = results.data['data']
     }).catch(err => {
         return console.error(err)
@@ -45,15 +46,21 @@ async function getInfoCards(search) {
 
 // Renderiza o cartão no slide
 function renderCard(infoCard) {
-    musics.innerHTML += `
-    <div class="card">
-        <img src="${infoCard.album.cover_medium}" alt="Música de ${infoCard.artist.name}" loading="lazy">
-        <p class="singer">${infoCard.artist.name}</p>
-        <p class="name_music">${infoCard.title_short}</p>
-        <audio src="${infoCard.preview}" controls type="audio/*"></audio>
-        <a href="${infoCard.link}" target="_blank" rel="noopener noreferrer">Ouça Agora <i class="fa fa-play"></i></a>
-    </div>
-    `
+    if (infoCard.length > 0) {
+        musics.innerHTML += `
+        <div class="card">
+            <img src="${infoCard.album.cover_medium}" alt="Música de ${infoCard.artist.name}" loading="lazy">
+            <p class="singer">${infoCard.artist.name}</p>
+            <p class="name_music">${infoCard.title_short}</p>
+            <audio src="${infoCard.preview}" controls type="audio/*"></audio>
+            <a href="${infoCard.link}" target="_blank" rel="noopener noreferrer">Ouça Agora <i class="fa fa-play"></i></a>
+        </div>
+        `
+    }
+
+    if (infoCard.explicit) {
+        cards[-1].style.border = '3px solid #f00'
+    }
 }
 
 async function getResults() {
