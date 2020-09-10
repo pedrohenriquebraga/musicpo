@@ -1,13 +1,13 @@
 // Sistema de rolagem 
 
 let searchInput = document.querySelector('#searchInput')
-    searchButton = document.querySelector('#search span')
-    musics = document.querySelector('.musics')
-    cards = document.querySelectorAll('.card')
+searchButton = document.querySelector('#search span')
+musics = document.querySelector('.musics')
+cards = document.querySelectorAll('.card')
 
-    slider = document.querySelector('.slider')
-    previousCard = document.querySelector('#previous')
-    nextCard = document.querySelector('#next')
+slider = document.querySelector('.slider')
+previousCard = document.querySelector('#previous')
+nextCard = document.querySelector('#next')
 
 scrollValue = 0
 
@@ -47,8 +47,7 @@ async function getInfoCards(search) {
 
 // Renderiza o cartão no slide
 function renderCard(infoCard) {
-    if (infoCard.length > 0) {
-        musics.innerHTML += `
+    musics.innerHTML += `
         <div class="card">
             <img src="${infoCard.album.cover_medium}" alt="Música de ${infoCard.artist.name}" loading="lazy">
             <p class="singer">${infoCard.artist.name}</p>
@@ -57,24 +56,23 @@ function renderCard(infoCard) {
             <a href="${infoCard.link}" target="_blank" rel="noopener noreferrer">Ouça Agora <i class="fa fa-play"></i></a>
         </div>
         `
-    }
 
-    if (infoCard.explicit) {
+    if (infoCard.explicit_lyrics) {
         cards[-1].style.border = '3px solid #f00'
     }
 }
 
 async function getResults() {
-    const randomArtist = ['Marshmello', 
-    'Anne Marie', 
-    'Lil Pump',
-    'Alan Walker', 
-    'SIA',
-    'Diplo',
-    'Anitta',
-    'Ludmilla',
-    'Gusttavo Lima',
-    'Simone e Simaria']
+    const randomArtist = ['Marshmello',
+        'Anne Marie',
+        'Lil Pump',
+        'Alan Walker',
+        'SIA',
+        'Diplo',
+        'Anitta',
+        'Ludmilla',
+        'Gusttavo Lima',
+        'Simone e Simaria']
     const randomNumber = Math.round(Math.random() * (randomArtist.length - 1))
     let search = searchInput.value || randomArtist[randomNumber]
 
