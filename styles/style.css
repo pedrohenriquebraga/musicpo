@@ -28,7 +28,7 @@ header {
     text-align: center;
     background: url(../assets/music-background.svg) no-repeat;
     background-size: 320px 320px;
-    background-position: bottom;
+    background-position: center 180%;
     
 }
 
@@ -126,9 +126,19 @@ header {
     margin-left: 20px;
     padding: 10px;
     width: 280px;
-    height: 400px;
+    height: 450px;
 
     transition: 200ms;
+}
+
+.slider .musics .card .explicit.hidden {
+    display: none;
+}
+
+.slider .musics .card .explicit {
+    color:#f00;
+    font-weight: 600;
+    margin: 10px auto -33px auto;
 }
 
 .slider .musics .card audio {
